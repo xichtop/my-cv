@@ -1,0 +1,25 @@
+@tailwind base;
+@layer base {
+  :root {
+    --color-text-base: 0, 0, 0;
+    --color-text-muted: 120, 120, 120;
+    --color-text-inverted: 255, 255, 255;
+    --color-fill: 245, 245, 245;
+    --muted: 200, 200, 200;
+    --color: 63, 194, 188;
+    --color-button-accent: 163, 236, 228;
+    --color-button-accent-hover: 55, 55, 55;
+    --color-button-muted: 244, 239, 238;
+  }
+  .dark {
+    --color-text-base: 255, 255, 255;
+    --color-text-muted: 150, 150, 150;
+    --color-text-inverted: 255, 255, 255;
+    --color-fill: 18, 18, 18;
+    --muted: 36, 36, 36;
+    --color: 84, 209, 204;
+    --color-button-accent: 63, 194, 188;
+    --color-button-accent-hover: 231, 121, 43;
+    --color-button-muted: 26, 26, 26;
+  }
+}
