@@ -6,8 +6,8 @@ import Section from "../Section.astro";
 import { projects } from "@cv";
 ---
 
-<Section className={Astro.props.className} title="Projects">
-	<div class="grid grid-cols-1 gap-3 md:grid-cols-2 print:flex print:flex-col">
+<Section className={Astro.props.className} title="Personal Projects">
+	<div class="grid grid-cols-1 gap-8 md:grid-cols-2 print:flex print:flex-col pr-4 md:pr-0">
 		{
 			projects.map(({ url, description, highlights, name, isActive, github }) => {
 				return (
