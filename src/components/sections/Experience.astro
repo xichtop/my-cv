@@ -1,52 +1,71 @@
 ---
 import Section from "../Section.astro"
 import { work } from "@cv"
+import dayjs from "dayjs"
 
-import HTML from "@/icons/html.astro"
-import CSS from "@/icons/css.astro"
-import JavaScript from "@/icons/javascript.astro"
-import TypeScript from "@/icons/type.astro"
-import React from "@/icons/react.astro"
-import Node from "@/icons/node.astro"
-import MySQL from "@/icons/sql.astro"
-import Git from "@/icons/git.astro"
-import GitHub from "@/icons/GitHub.astro"
-import Tailwind from "@/icons/tailwind.astro"
-import Next from "@/icons/next.astro"
-import Swift from "@/icons/swift.astro"
-import SwiftUI from "@/icons/swiftui.astro"
-import Kotlin from "@/icons/kotlin.astro"
-import Flutter from "@/icons/flutter.astro"
+import HTML from "@/icons/html.astro";
+import CSS from "@/icons/css.astro";
+import JavaScript from "@/icons/javascript.astro";
+import TypeScript from "@/icons/type.astro";
+import React from "@/icons/react.astro";
+import Node from "@/icons/node.astro";
+import Git from "@/icons/git.astro";
+import GitHub from "@/icons/GitHub.astro";
+import TailwindCSS from "@/icons/tailwindcss.astro";	
+import NextJS from "@/icons/nextjs.astro";
+import Figma from "@/icons/Figma.astro";
+import Gitlab from "@/icons/Gitlab.astro";
+import Angular from "@/icons/Angular.astro";
+import AngularMaterial from "@/icons/Material.astro";
+import DaisyUI from "@/icons/DaisyUI.astro";
+import NgZorro from "@/icons/NgZorro.astro";
+import AdobeIllustrator from "@/icons/Illustrator.astro";
+import Jenkins from "@/icons/Jenkins.astro";
+import Docker from "@/icons/Docker.astro";
+import Jira from "@/icons/Jira.astro";
+import Capacitor from "@/icons/Capacitor.astro";
+import SignalR from "@/icons/SignalR.astro";
+import Ubuntu from "@/icons/Ubuntu.astro";
+import MacOS from "@/icons/MacOS.astro";
 
 const SKILLS_ICONS: Record<string, any> = {
-  HTML,
-  CSS,
-  JavaScript,
-  TypeScript,
-  React,
-  Node,
-  MySQL,
-  Git,
-  GitHub,
-  Next,
-  Tailwind,
-  Swift,
-  SwiftUI,
-  Kotlin,
-  Flutter,
-}
+	Angular,
+	AngularMaterial,
+	HTML,
+	CSS,
+	JavaScript,
+	TypeScript,
+	React,
+	Node,
+	Git,
+	GitHub,
+	NextJS,
+	TailwindCSS	,
+	Figma,
+	Gitlab,
+	DaisyUI,
+	NgZorro,
+	AdobeIllustrator,
+	Jenkins,
+	Docker,
+	Jira,
+	Capacitor,
+	SignalR,
+	Ubuntu,
+	MacOS,
+};
 ---
 <Section className={Astro.props.className} title="Experience">
   <ul class="flex flex-col">
     {work.map(({ name, startDate, endDate, position, summary, responsibilities, achievements, url, skills, location, location_type }) => {
-      const startYear = new Date(startDate).getFullYear()
-      const endYear = endDate != null ? new Date(endDate).getFullYear() : "Present"
+      const start = dayjs(startDate).format("MMM YYYY")
+      const end = endDate != null ? dayjs(endDate).format("MMM YYYY") : "Present"
 
       return (
-        <li class="relative print:py-2">
+        <li class="relative print:py-2 pl-6 md:pl-0">
           <div class="group relative grid pb-1 print:pb-0 transition-all print:grid-cols-1 print:gap-1 sm:grid-cols-12 sm:gap-8 md:gap-6 lg:hover:!opacity-100 ">
             <header class="relative mt-1 text-xs font-semibold sm:col-span-2">
-              <time datetime={startDate} data-title={startDate}>{startYear}</time> - <time datetime={endDate} data-title={endDate}>{endYear}</time>
+              <time datetime={startDate} data-title={startDate}>{start}</time> - <time datetime={endDate} data-title={endDate}>{end}</time>
             </header>
             <div class="relative flex flex-col pb-6 print:pb-0 before:-ml-6 sm:col-span-10 before:w-px print:before:hidden before:absolute before:bg-skin-muted before:h-full before:mt-2">
             <div class="absolute w-2 h-2 bg-skin-muted rounded-full mt-2 -translate-x-[1.71rem] ring print:hidden ring-skin-fill"></div>
@@ -81,8 +100,8 @@ const SKILLS_ICONS: Record<string, any> = {
                       {Array.isArray(summary) ? (
                         summary.map(item => (
                           {item}
-                        ))
-                      ) : (
+                      ))) : 
+                      (
                         <li>{summary}</li>
                       )}
                     </ul>
@@ -95,9 +114,11 @@ const SKILLS_ICONS: Record<string, any> = {
                   <div class="flex flex-col gap-1">
                     <h4>Responsibilities:</h4>
                     <ul class="text-skin-muted [&>li]:ml-4 flex list-disc flex-col gap-2">
-                      {responsibilities.map(responsibility => (
-                        <li>{responsibility}</li>
-                      ))}
+                      {responsibilities.map(responsibility => {
+                        return (
+                          <li>{responsibility}</li>
+                        )
+                      })}
                     </ul>
                   </div>
                 )}
@@ -122,22 +143,23 @@ const SKILLS_ICONS: Record<string, any> = {
 
                 <ul class="flex print:hidden flex-wrap gap-2" aria-label="Technologies used">
                   {skills && skills.map(skill => {
-                    const iconName = skill === "Next.js" ? "Next" : skill
-                    const Icon = SKILLS_ICONS[iconName]
+                    const iconName = skill.replace(" ", "");
+                    const Icon = SKILLS_ICONS[iconName];
                     return (
                       <li class="bg-skin-button-accent/20 border-skin-hue/20 text-skin-hue print:p-0 print:bg-transparent print:text-zinc-800 flex gap-1 items-center border-solid print:border-none border rounded-md px-2 py-0.5 text-xs">
-                        {Icon && <Icon />} <span>{skill}</span>
+                        {Icon && <Icon class="w-4 h-4"/>} <span>{skill}</span>
                       </li>
                     )
                   })}
                 </ul>
-)}
+                )}
               </div>
             </div>
         </div>
         </li>
       )
-    })}
+    })
+  }
   </ul>  
 </Section>
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>

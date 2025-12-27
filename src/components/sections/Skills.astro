@@ -6,37 +6,51 @@ import JavaScript from "@/icons/javascript.astro";
 import TypeScript from "@/icons/type.astro";
 import React from "@/icons/react.astro";
 import Node from "@/icons/node.astro";
-import MySQL from "@/icons/sql.astro";
 import Git from "@/icons/git.astro";
 import GitHub from "@/icons/GitHub.astro";
-import Tailwind from "@/icons/tailwind.astro";
-import Next from "@/icons/next.astro";
+import TailwindCSS from "@/icons/tailwindcss.astro";	
+import NextJS from "@/icons/nextjs.astro";
 import { skills } from "@cv";
-import Swift from "@/icons/swift.astro";
-import SwiftUI from "@/icons/swiftui.astro";
-import Kotlin from "@/icons/kotlin.astro";
-import Flutter from "@/icons/flutter.astro";
 import Figma from "@/icons/Figma.astro";
 import Gitlab from "@/icons/Gitlab.astro";
+import Angular from "@/icons/Angular.astro";
+import AngularMaterial from "@/icons/Material.astro";
+import DaisyUI from "@/icons/DaisyUI.astro";
+import NgZorro from "@/icons/NgZorro.astro";
+import AdobeIllustrator from "@/icons/Illustrator.astro";
+import Jenkins from "@/icons/Jenkins.astro";
+import Docker from "@/icons/Docker.astro";
+import Jira from "@/icons/Jira.astro";
+import Capacitor from "@/icons/Capacitor.astro";
+import SignalR from "@/icons/SignalR.astro";
+import Ubuntu from "@/icons/Ubuntu.astro";
+import MacOS from "@/icons/MacOS.astro";
 
 const SKILLS_ICONS: Record<string, any> = {
+	Angular,
+	AngularMaterial,
 	HTML,
 	CSS,
 	JavaScript,
 	TypeScript,
 	React,
 	Node,
-	MySQL,
 	Git,
 	GitHub,
-	Next,
-	Tailwind,
-	Swift,
-	SwiftUI,
-	Kotlin,
-	Flutter,
+	NextJS,
+	TailwindCSS	,
 	Figma,
 	Gitlab,
+	DaisyUI,
+	NgZorro,
+	AdobeIllustrator,
+	Jenkins,
+	Docker,
+	Jira,
+	Capacitor,
+	SignalR,
+	Ubuntu,
+	MacOS,
 };
 ---
 
@@ -44,7 +58,7 @@ const SKILLS_ICONS: Record<string, any> = {
 	<ul class="[&>li>svg]:text-skin-hue inline-flex flex-wrap gap-6 [&>li>svg]:size-5 [&>li]:text-sm">
 		{
 			skills.map(({ name }) => {
-				const iconName = name === "Next.js" ? "Next" : name;
+				const iconName = name.replace(" ", "");
 				const Icon = SKILLS_ICONS[iconName];
 
 				return (
